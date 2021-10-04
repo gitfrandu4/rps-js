@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PPoT</title>
+
+    <link rel="stylesheet" href="game.css">
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="game">
+        <div class="game-title">
+            <h1>Piedra, Papel o Tijera(s)</h1>
+        </div>
+
+        <h2 id="game-info">
+            ¡Juega!
+        </h2>
+
+        <div class="game-zone">
+            <h3>Jugador 1</h3>
+
+            <div class="game-options" id="game-options-p1">
+                <div class="game-option">
+                    <img src="./imgs/papel.png" class="game-option-img img-disable" id="img-papel" alt="Símbolo de papel">
+                </div>
+                <div class="game-option">
+                    <img src="./imgs/piedra.png" class="game-option-img img-disable" id="img-piedra" alt="Símbolo de piedra">
+                </div>
+                <div class="game-option">
+                    <img src="./imgs/tijera.png" class="game-option-img img-disable" id="img-tijera" alt="Símbolo de tijera">
+                </div>
+            </div>
+        </div>
+
+        <div class="game-zone">
+            <h3>Jugador 2</h3>
+
+            <div class="game-options" id="game-options-p2">
+                <div class="game-option">
+                    <img src="./imgs/papel.png" class="game-option-img img-disable" id="img-papel" alt="Símbolo de papel">
+                </div>
+                <div class="game-option">
+                    <img src="./imgs/piedra.png" class="game-option-img img-disable" id="img-piedra" alt="Símbolo de piedra">
+                </div>
+                <div class="game-option">
+                    <img src="./imgs/tijera.png" class="game-option-img img-disable" id="img-tijera" alt="Símbolo de tijera">
+                </div>
+            </div>
+        </div>
+
+        <div class="new-game">
+            <button type="button" class="btn btn-primary btn-new-game" id="btn-new-game" onclick="newGame()">Iniciar partida</button>
+            <div id="timer"></div>
+            <div class="img-emoji">
+                <img src="./imgs/emoji.png" id="emoji" width=40 alt="Emoji pensativo" style="display: none;">
+            </div>
+        </div>
+
+        <div class="results-table">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Jugador 1</th>
+                    <th scope="col"></th>
+                    <th scope="col">Jugador 2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td id="jugada_j1"></td>
+                    <td></td>
+                    <td id="jugada_j2"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+    <script src="./game2.js"></script>
+</body>
+</html>

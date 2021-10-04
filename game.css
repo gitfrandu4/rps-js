@@ -1,0 +1,212 @@
+/** 
+ * ========================================================
+ * ====================== CSS general =====================
+ * ========================================================
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap');
+body {
+    font-family: 'Source Code Pro', monospace !important;
+    display: flex;
+    height: 100vh;
+    min-width: 420px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    margin: 1em !important;
+    background-color: #FFF0E5 !important;
+    /* background-image: url("./imgs/600px-Pierre_ciseaux_feuille_lézard_spock.svg.png");     */
+}
+
+header {
+    /* */
+}
+
+img {
+    max-width: 100px;
+}
+
+/** 
+ * ========================================================
+ * ==================== Zona de Juegos ====================
+ * ========================================================
+ */
+.game {
+    width: 40%;
+    background-color: #FFB580;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 0 0;
+    border-radius: 50px 0 50px;
+    box-shadow: 6px 6px 10px 2px rgb(0, 0, 0);
+}
+
+.game-title {
+    width: 100%;
+    text-align: center;
+    padding: 1em 0 1em 0;
+    background-color: #FF8833;
+    border-radius: 50px 0 0 0;
+}
+
+#game-info {
+    width: 100%;
+    padding: 0.4em;
+}
+
+.game-zone {
+    width:50%;
+    padding: 1.4em;
+}
+
+.game-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.game-option-img {
+    width: 100%;
+    padding: 0.4em;
+}
+
+.img-disable {
+    filter: grayscale(1);
+}
+
+.img-disable:hover {
+    background-color: transparent !important;
+}
+
+.img-active {
+    transition: transform .60s;
+}
+
+.img-active:hover {
+    transform: scale(1.1);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#img-papel:hover{
+    background-color: #ffe79c;
+}
+
+#img-piedra:hover{
+    background-color: #ff9a94;
+}
+
+#img-tijera:hover{
+    background-color: #f1b4f3;
+}
+
+.new-game {
+    width: 100%;
+    align-items: center;
+    padding: 1.2em;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.btn-new-game {
+    transition: transform .60s !important;
+    color: black !important;
+    font-size: 1.4em !important;
+    background-color: #FFA25F !important;
+    border-color: #DF7115 !important;
+}
+
+.btn-new-game:hover {
+    transform: scale(1.1);
+    background-color: #e2640a !important;
+}
+
+/** 
+ * ========================================================
+ * ================ Fin zona de Juegos ====================
+ * ========================================================
+ */
+
+ /** 
+ * ========================================================
+ * ================== Zona de resultados ==================
+ * ========================================================
+ */
+
+ .results-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em;
+    text-align: center;
+    background-color: #33AAFF;
+    font-size: 1.2em;
+    border-radius: 0 0 50px;
+}
+
+.table {
+    width: 0% !important;
+    color: white !important;
+}
+
+/* 
+.form-game {
+    width: 60%;
+    text-align: center !important;
+    padding: 1em;
+    background-color: coral;
+} */
+
+/* .form-row {
+    justify-content: center;
+} */
+
+/* #j1, #j2 {
+    color: white;
+    font-size: 3em;
+    width: 100px;
+    height: 40px;
+} */
+
+
+ /** 
+ * ========================================================
+ * ============== Fin zona de resultados ==================
+ * ========================================================
+ */
+
+
+
+/** 
+ * ========================================================
+ * ==================== media queries =====================
+ * ========================================================
+ */
+@media (max-width: 1240px) {
+
+    .game {
+        width: 80%;
+    }
+
+    .game-zone {
+        width:100%;
+        padding: 0.2em;
+    }
+
+    .img-emoji {
+        display: none !important;
+    }
+
+    .btn-new-game {
+        font-size: 1.1em !important;
+    }
+  }
+
+/** 
+ * ========================================================
+ * ================ fin media queries =====================
+ * ========================================================
+ */
