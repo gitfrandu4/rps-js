@@ -1,45 +1,52 @@
+let ganaciones	= ["papel-piedra" , "piedra-tijeras" , "tijera-papel"];
+let opciones = ["papel", "piedra", "tijera"];
+let contador = 0;
+let timerCount = 3;
 
+let j1 = ""
+let j2 = ""
 
-var ganaciones	= ["papel-piedra" , "piedra-tijeras" , "tijera-papel"];
-var opciones = ["papel", "piedra", "tijera"];
-var contador = 0;
-var timerCount = 3
+let winner
 
-var j1 = ""
-var j2 = ""
+let gameOptions_p1 = document.getElementById("game-options-p1");
+let gameOptions_p2 = document.getElementById("game-options-p2");
+let options_p1 = gameOptions_p1.getElementsByClassName("game-option-img");
+let options_p2 = gameOptions_p2.getElementsByClassName("game-option-img");
+
+let gameInfo = document.getElementById("game-info");
+let btnNewGame = document.getElementById("btn-new-game");
+
+let timer = document.getElementById("timer");
 
 /**
  * newGame() - Starts the rock, paper, scissors game
  */
 function newGame() {
 
-    document.getElementById("game-info").innerHTML = "<h2>¡Comienza la partida!</h2>";
-    document.getElementById("btn-new-game").setAttribute('style', 'display:none');
+    gameInfo.innerHTML = "<h2>¡Comienza la partida!</h2>";
+    btnNewGame.setAttribute('style', 'display:none');
 
     clear()
     countDownTimer();
 }
 
+/**
+ * clear() - clears winner info of last match
+ */
 function clear(){
 
-    document.getElementById("game-info").classList.remove("alert", "alert-success", "alert-warning")
+    gameInfo.classList.remove("alert", "alert-success", "alert-warning")
 
-    // Clear Player1 buttons
-    gameOptions = document.getElementById("game-options-p1")
-    var options = gameOptions.getElementsByClassName("game-option-img");
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-active', 'img-disable');  
-        options[i].classList.remove('img-winner', 'img-loser', 'img-tie');
+    // Clear Player1 buttons info
+    for (var i = 0; i<options_p1.length; i++){
+        options_p1[i].classList.replace('img-active', 'img-disable');  
+        options_p1[i].classList.remove('img-winner', 'img-loser', 'img-tie');
     }
 
-    // Clear Player2 buttons
-    gameOptions = document.getElementById("game-options-p2")
-    var options = gameOptions.getElementsByClassName("game-option-img");
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-active', 'img-disable');  
-        options[i].classList.remove('img-winner');
-        options[i].classList.remove('img-loser');
-        options[i].classList.remove('img-tie');
+    // Clear Player2 buttons info
+    for (var i = 0; i<options_p1.length; i++){
+        options_p2[i].classList.replace('img-active', 'img-disable');  
+        options_p2[i].classList.remove('img-winner', 'img-loser', 'img-tie');
     }
 }
 
@@ -48,19 +55,16 @@ function clear(){
  * then starts player1's turn
  */
 function countDownTimer() {
-
     // timer loop
-    var timer = setInterval(function(){
-        document.getElementById("timer").setAttribute('style', 'display:');
-        document.getElementById("timer").innerHTML = timerCount 
+    var timerLoop = setInterval(function(){
+        timer.setAttribute('style', 'display:');
+        timer.innerHTML = timerCount 
         timerCount--
         if(timerCount < 0){
             timerCount = 3
-            document.getElementById("timer").setAttribute('style', 'display:none'); // off timer
-            // timer loop ends
-            clearInterval(timer)
-            // starts player1's turn
-            setTimeout(player1, 100)
+            timer.setAttribute('style', 'display:none'); // off timer
+            clearInterval(timerLoop) // timer loop ends
+            setTimeout(player1, 100) // starts player1's turn
         }
     }, 700)
 }
@@ -70,19 +74,19 @@ function countDownTimer() {
  */
 function player1() {
 
-    document.getElementById("game-info").innerHTML = "Turno del jugador 1"
-    
-    var gameOptions = document.getElementById("game-options-p1")
-    var options = gameOptions.getElementsByClassName("game-option-img");
+    gameInfo.innerHTML = "Turno del jugador 1"
 
     // ======== Adds event listener to player1 buttons ========
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-disable', 'img-active');
+    for (var i = 0; i<options_p1.length; i++){
+        options_p1[i].classList.replace('img-disable', 'img-active');
         // console.log(options[i])
-        options[i].addEventListener("click", setPlay1, false);
+        options_p1[i].addEventListener("click", setPlay1, false);
     }
 }
 
+/**
+ * setPlay1() - saves player1's choice and starts player2's actions
+ */
 function setPlay1() {
     j1 = this.id;
     // starts player2's turn
@@ -95,50 +99,44 @@ function setPlay1() {
 function player2() {
 
     // ======== Remove event listener to player1 buttons ========
-    gameOptions = document.getElementById("game-options-p1")
-    var options = gameOptions.getElementsByClassName("game-option-img");
-
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-active', 'img-disable');
+    for (var i = 0; i<options_p1.length; i++){
+        options_p1[i].classList.replace('img-active', 'img-disable');
         // console.log(options[i])
-        options[i].removeEventListener("click", setPlay1, false);
+        options_p1[i].removeEventListener("click", setPlay1, false);
     }
 
     // ======== Adds event listener to player2 buttons ========
-    document.getElementById("game-info").innerHTML = "Turno del jugador 2"
+    gameInfo.innerHTML = "Turno del jugador 2"
     
-    gameOptions = document.getElementById("game-options-p2")
-
-    var options = gameOptions.getElementsByClassName("game-option-img");
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-disable', 'img-active');
+    for (var i = 0; i<options_p2.length; i++){
+        options_p2[i].classList.replace('img-disable', 'img-active');
         // console.log(options[i])
-        options[i].addEventListener("click", setPlay2, false);
+        options_p2[i].addEventListener("click", setPlay2, false);
     }
 }
 
+/**
+ * setPlay2() - saves player2's choice and starts endGame actions
+ */
 function setPlay2() {
     j2 = this.id;
     endGame();
 }
 
 /**
- * endGame() - finish the game and show results
+ * endGame() - finish game and show results
  */
 function endGame(){
 
     // ======== Removes event listener to player2 buttons ========
-    gameOptions = document.getElementById("game-options-p2")
-    var options = gameOptions.getElementsByClassName("game-option-img");
-
-    for (var i = 0; i<options.length; i++){
-        options[i].classList.replace('img-active', 'img-disable');
+    for (var i = 0; i<options_p2.length; i++){
+        options_p2[i].classList.replace('img-active', 'img-disable');
         // console.log(options[i])
-        options[i].removeEventListener("click", setPlay2, false);
+        options_p2[i].removeEventListener("click", setPlay2, false);
     }
 
-    document.getElementById("game-info").innerHTML = "¡Fin de la partida!"
-    document.getElementById("btn-new-game").setAttribute('style', 'display:\'\'');
+    gameInfo.innerHTML = "¡Fin de la partida!"
+    btnNewGame.setAttribute('style', 'display:\'\'');
 
     setTimeout(winnerInfo, 1000)
 
@@ -147,25 +145,24 @@ function endGame(){
 
     console.log(j1 + " " + j2)
 
-    document.getElementById("results-table").innerHTML += " \
-            <tr><td>" + j1 + "</td> \
-                <td></td>  \
-                <td>" + j2 + "</td></tr>"
+    winner = ganaciones.includes(`${j1}-${j2}`) ? "1":"2" 
+
+    document.getElementById("results-table").innerHTML += `
+            <tr><td>${j1.toUpperCase()}</td>
+                <td></td>
+                <td>${j2.toUpperCase()}</td></tr>`
 
     document.getElementById("div-table").setAttribute('style', 'display:flex');
 }
 
+/**
+ * winnerInfo() - change the interface elements to indicate the winner
+ */
 function winnerInfo(){
 
-    gameOptions_p1 = document.getElementById("game-options-p1");
-    var options_p1 = gameOptions_p1.getElementsByClassName("game-option-img");
-
-    gameOptions_p2 = document.getElementById("game-options-p2");
-    var options_p2 = gameOptions_p2.getElementsByClassName("game-option-img");
-
     if( j1 === j2 ){
-        document.getElementById("game-info").innerHTML = "¡Empate!"
-        document.getElementById("game-info").classList.add("alert", "alert-warning")
+        gameInfo.innerHTML = "¡Empate!"
+        gameInfo.classList.add("alert", "alert-warning")
 
         for (var i = 0; i < options_p2.length; i++) {
           if (options_p1[i].id === `img-${j1}`) options_p1[i].classList.add("img-tie");
@@ -173,9 +170,8 @@ function winnerInfo(){
         }
 
     } else {
-        var winner = ganaciones.includes(`${j1}-${j2}`) ? "1":"2"
-        document.getElementById("game-info").innerHTML = `Ganador: Jugador ${winner}`
-        document.getElementById("game-info").classList.add("alert", "alert-success")
+        gameInfo.innerHTML = `Ganador: Jugador ${winner}`
+        gameInfo.classList.add("alert", "alert-success")
 
         for (var i = 0; i < options_p1.length; i++) {
 
@@ -189,8 +185,5 @@ function winnerInfo(){
             else options_p2[i].classList.add("img-loser");
           }
         }
-
     }
-    
-    
 }

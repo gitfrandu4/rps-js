@@ -9,7 +9,7 @@ body {
   font-family: "Source Code Pro", monospace !important;
   display: flex;
   /* height: 100vh; */
-  min-width: 420px;
+  min-width: 320px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -88,15 +88,15 @@ img {
 }
 
 .img-winner {
-  filter: drop-shadow(5px 5px 10px rgb(81, 255, 0));
+  filter: drop-shadow(0px 0px 10px rgb(81, 255, 0));
 }
 
 .img-loser {
-  filter: drop-shadow(5px 5px 10px rgb(255, 2, 2));
+  filter: drop-shadow(0px 0px 10px rgb(255, 2, 2));
 }
 
 .img-tie {
-  filter: drop-shadow(5px 5px 10px #fad14b);
+  filter: drop-shadow(0px 0px 15px #f5c118);
 }
 
 .img-active:hover {
@@ -164,7 +164,8 @@ img {
   flex-direction: column;
   padding: 2em;
   text-align: center;
-  background-color: #33aaff;
+  /* background-color: #33aaff; */
+  background-color: #3958db;
   font-size: 1.2em;
   border-radius: 0 0 50px;
 }
@@ -224,10 +225,19 @@ img {
 }
 
 @media (max-width: 540px) {
-  .game {
-    width: 95%;
-  }
 
+    body {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    .game-title > h1 {
+        font-size: 1.2em !important;
+    }
+
+    .game {
+        width: 95%;
+    }
 }
 
 /** 
