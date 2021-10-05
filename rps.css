@@ -8,7 +8,7 @@
 body {
     font-family: 'Source Code Pro', monospace !important;
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     min-width: 420px;
     flex-direction: column;
     justify-content: center;
@@ -51,9 +51,13 @@ img {
     border-radius: 50px 0 0 0;
 }
 
+.game-title > h1 {
+    font-size: 2em !important;
+}
+
 #game-info {
     width: 100%;
-    padding: 0.4em;
+    padding: 0.4em 0 0 0;
 }
 
 .game-zone {
@@ -83,6 +87,18 @@ img {
     transition: transform .60s;
 }
 
+.img-winner {
+    filter: drop-shadow( 5px 5px 10px rgb(81, 255, 0));
+}
+
+.img-loser {
+    filter: drop-shadow( 5px 5px 10px rgb(255, 2, 2));
+}
+
+.img-tie {
+    filter: drop-shadow( 5px 5px 10px #fad14b);
+}
+
 .img-active:hover {
     transform: scale(1.1);
     border-radius: 50%;
@@ -106,7 +122,7 @@ img {
     align-items: center;
     padding: 1.2em;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .btn-new-game {
@@ -122,6 +138,11 @@ img {
     background-color: #e2640a !important;
 }
 
+#timer {
+    transition: transform .60s !important;
+    transform: scale(2);
+}
+
 /** 
  * ========================================================
  * ================ Fin zona de Juegos ====================
@@ -134,9 +155,10 @@ img {
  * ========================================================
  */
 
- .results-table {
+ .div-table {
     width: 100%;
-    display: flex;
+    display: none;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -148,7 +170,7 @@ img {
 }
 
 .table {
-    width: 0% !important;
+    width: 80% !important;
     color: white !important;
 }
 
@@ -194,10 +216,6 @@ img {
     .game-zone {
         width:100%;
         padding: 0.2em;
-    }
-
-    .img-emoji {
-        display: none !important;
     }
 
     .btn-new-game {
