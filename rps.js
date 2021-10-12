@@ -89,14 +89,18 @@ function player1() {
  */
 function setPlay1() {
     j1 = this.id;
+
     // starts player2's turn
-    player2();
+    // player2();
+
+    // starts computer's turn
+    player2computer();
 }
 
 /**
  * player2() - Player 2 actions 
  */
-function player2() {
+ function player2() {
 
     // ======== Remove event listener to player1 buttons ========
     for (var i = 0; i<options_p1.length; i++){
@@ -116,6 +120,30 @@ function player2() {
 }
 
 /**
+ * player2() - Player 2 actions 
+ */
+ function player2computer() {
+
+    document.getElementById("lds-default").style.display = "inline-block";
+
+    // ======== Remove event listener to player1 buttons ========
+    for (var i = 0; i<options_p1.length; i++){
+        options_p1[i].classList.replace('img-active', 'img-disable');
+        // console.log(options[i])
+        options_p1[i].removeEventListener("click", setPlay1, false);
+    }
+
+    // ======== Adds event listener to player2 buttons ========
+    gameInfo.innerHTML = "Turno del jugador 2"
+    
+    nRandom = Math.floor(Math.random() * (4 - 1)) + 1
+    nRandom === 3 ? j2 = "img-tijera" :
+        nRandom === 2 ? j2 = "img-piedra" : j2 = "img-papel"
+
+    setTimeout(endGame, 1500)
+}
+
+/**
  * setPlay2() - saves player2's choice and starts endGame actions
  */
 function setPlay2() {
@@ -127,6 +155,9 @@ function setPlay2() {
  * endGame() - finish game and show results
  */
 function endGame(){
+
+    // ======== Removes spin loader ========
+    document.getElementById("lds-default").style.display = "none";
 
     // ======== Removes event listener to player2 buttons ========
     for (var i = 0; i<options_p2.length; i++){
