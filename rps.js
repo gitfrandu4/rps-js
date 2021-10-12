@@ -90,7 +90,7 @@ function player1() {
 function setPlay1() {
     j1 = this.id;
 
-    // starts player2's turn
+    // starts player2's turn <= Función a usar si queremos que j2 === humano
     // player2();
 
     // starts computer's turn
